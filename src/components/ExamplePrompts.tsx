@@ -1,32 +1,35 @@
 import React from 'react';
 import { MessageSquare, Copy, MapPin, Utensils, Dumbbell, Zap, Star, Trophy } from 'lucide-react';
+import { useLanguage } from '../App';
 
 const ExamplePrompts: React.FC = () => {
+  const { t } = useLanguage();
+
   const prompts = [
     {
-      category: 'GYM HUNTING',
+      category: t('gymHunting'),
       icon: MapPin,
-      text: 'Show me quality gyms near Angren under $50/month with Olympic weights and parking.',
-      gradient: 'from-emerald-500 via-teal-500 to-green-600',
-      bgGradient: 'from-emerald-50 to-teal-50',
+      text: t('showMeQuality'),
+      color: 'bg-blue-600',
+      bgColor: 'bg-blue-50',
       image: 'https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=400',
       emoji: '🏋️',
     },
     {
-      category: 'DIET PLANNING',
+      category: t('dietPlanning'),
       icon: Utensils,
-      text: 'Create a meal plan for 75kg person with $100/month budget for muscle building.',
-      gradient: 'from-blue-500 via-indigo-500 to-purple-600',
-      bgGradient: 'from-blue-50 to-indigo-50',
+      text: t('createMealPlan'),
+      color: 'bg-blue-600',
+      bgColor: 'bg-blue-50',
       image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400',
       emoji: '🥗',
     },
     {
-      category: 'WORKOUT PLANS',
+      category: t('workoutPlans'),
       icon: Dumbbell,
-      text: 'I have 30 minutes daily, intermediate level, need effective home workouts for fat burning.',
-      gradient: 'from-orange-500 via-red-500 to-pink-600',
-      bgGradient: 'from-orange-50 to-red-50',
+      text: t('have30Minutes'),
+      color: 'bg-blue-600',
+      bgColor: 'bg-blue-50',
       image: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=400',
       emoji: '💪',
     },
@@ -38,85 +41,81 @@ const ExamplePrompts: React.FC = () => {
   };
 
   return (
-    <section id="examples" className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden">
+    <section id="examples" className="py-20 bg-gray-900 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl animate-bounce"></div>
-        <div className="absolute top-1/2 left-1/2 w-60 h-60 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-20 left-10 w-40 h-40 bg-gray-700/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-32 h-32 bg-gray-600/20 rounded-full blur-3xl animate-bounce"></div>
+        <div className="absolute top-1/2 left-1/2 w-60 h-60 bg-gray-700/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full text-sm font-semibold mb-8">
-            <Zap className="h-5 w-5" />
-            <span>Real User Examples</span>
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg text-sm font-medium mb-6">
+            <Zap className="h-4 w-4" />
+            <span>{t('realUserExamples')}</span>
           </div>
           
-          <h2 className="text-4xl sm:text-6xl font-bold text-white mb-6 leading-tight">
-            See the{' '}
-            <span className="bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-              AI Magic
-            </span>
-            {' '}in Action
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
+            {t('seeTheAI')}
           </h2>
-          <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-medium">
-            Get inspired by these effective prompts and see how our AI transforms lives.
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-normal">
+            {t('getInspired')}
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
+        <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
           {prompts.map((prompt, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-white to-gray-50 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 group"
+              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 group"
             >
               {/* Image */}
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
                 <img
                   src={prompt.image}
                   alt={prompt.category}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 
                 {/* Category Badge */}
-                <div className={`absolute top-4 left-4 px-4 py-2 rounded-full bg-gradient-to-r ${prompt.gradient} text-white text-sm font-semibold shadow-lg`}>
+                <div className={`absolute top-3 left-3 px-3 py-1 rounded ${prompt.color} text-white text-xs font-medium shadow-sm`}>
                   {prompt.category}
                 </div>
 
                 {/* Emoji */}
-                <div className="absolute top-4 right-4 text-3xl">
+                <div className="absolute top-3 right-3 text-2xl">
                   {prompt.emoji}
                 </div>
 
                 {/* Icon */}
-                <div className={`absolute bottom-4 right-4 p-4 rounded-xl bg-gradient-to-r ${prompt.gradient} shadow-xl group-hover:scale-110 transition-transform duration-300`}>
-                  <prompt.icon className="h-6 w-6 text-white" />
+                <div className={`absolute bottom-3 right-3 p-3 rounded ${prompt.color} shadow-sm group-hover:scale-105 transition-transform duration-300`}>
+                  <prompt.icon className="h-5 w-5 text-white" />
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-8">
-                <div className="flex items-start justify-between mb-6">
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
+              <div className="p-6">
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                     {prompt.category}
                   </h3>
                   <button
                     onClick={() => handleCopyPrompt(prompt.text)}
-                    className="opacity-0 group-hover:opacity-100 p-3 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-110"
+                    className="opacity-0 group-hover:opacity-100 p-2 rounded hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
                     title="Copy this prompt"
                   >
-                    <Copy className="h-5 w-5 text-gray-500" />
+                    <Copy className="h-4 w-4 text-gray-500" />
                   </button>
                 </div>
                 
-                <p className="text-gray-700 leading-relaxed mb-6 font-medium text-lg">
+                <p className="text-gray-700 leading-relaxed mb-4 font-normal text-sm">
                   "{prompt.text}"
                 </p>
 
-                <button className={`w-full py-4 px-6 rounded-xl bg-gradient-to-r ${prompt.gradient} text-white font-semibold text-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg`}>
-                  Try This Prompt
+                <button className={`w-full py-3 px-4 rounded ${prompt.color} text-white font-medium text-sm hover:shadow-md transition-all duration-300 shadow-sm`}>
+                  {t('tryThisPrompt')}
                 </button>
               </div>
             </div>
@@ -124,58 +123,55 @@ const ExamplePrompts: React.FC = () => {
         </div>
 
         {/* Conversation Examples */}
-        <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-10 shadow-xl mb-20">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full text-sm font-semibold mb-6">
-              <Trophy className="h-5 w-5" />
-              <span>Real Conversations</span>
+        <div className="bg-white rounded-lg p-8 shadow-md mb-16">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg text-sm font-medium mb-4">
+              <Trophy className="h-4 w-4" />
+              <span>{t('realConversations')}</span>
             </div>
             
-            <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Actual{' '}
-              <span className="bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
-                AI Conversations
-              </span>
+            <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">
+              {t('actualAI')}
             </h3>
-            <p className="text-xl text-gray-600 font-medium">
-              See how our AI handles real user questions.
+            <p className="text-lg text-gray-600 font-normal">
+              {t('seeHowAI')}
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {[
               {
-                user: "I'm a beginner, 25 years old, want to lose 10kg in 3 months and get fit.",
-                ai: "Perfect! I'll create a comprehensive plan with cardio workouts, strength training schedule, and a calorie-deficit meal plan that will help you achieve your goals."
+                user: t('beginner25'),
+                ai: t('perfectComprehensive')
               },
               {
-                user: "Find gyms in downtown with swimming pools under $80/month.",
-                ai: "Here are 5 quality gyms in your area with swimming pools, membership costs, amenities, and user reviews to help you make the best choice."
+                user: t('findGymsDowntown'),
+                ai: t('hereAre5')
               },
               {
-                user: "I work night shifts, need a flexible workout routine that fits my schedule.",
-                ai: "No problem! I'll design a flexible schedule that works with your sleep pattern, including home workouts and 24/7 gym recommendations."
+                user: t('workNightShifts'),
+                ai: t('noProblemFlexible')
               },
               {
-                user: "Vegetarian diet plan for muscle building, $120 budget.",
-                ai: "Here's a high-protein vegetarian meal plan with shopping lists, prep tips, and supplement recommendations for effective muscle building."
+                user: t('vegetarianDiet'),
+                ai: t('highProteinVegetarian')
               }
             ].map((example, index) => (
-              <div key={index} className="space-y-4">
-                <div className="bg-gradient-to-r from-emerald-50 to-teal-50 p-6 rounded-xl border-2 border-emerald-200">
+              <div key={index} className="space-y-3">
+                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-semibold text-sm">U</span>
+                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white font-medium text-xs">U</span>
                     </div>
-                    <p className="text-emerald-800 font-medium text-lg">"{example.user}"</p>
+                    <p className="text-blue-800 font-normal text-sm">"{example.user}"</p>
                   </div>
                 </div>
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border-2 border-blue-200">
+                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Zap className="h-4 w-4 text-white" />
+                    <div className="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Zap className="h-3 w-3 text-white" />
                     </div>
-                    <p className="text-blue-800 font-medium text-lg">{example.ai}</p>
+                    <p className="text-gray-800 font-normal text-sm">{example.ai}</p>
                   </div>
                 </div>
               </div>
@@ -185,28 +181,28 @@ const ExamplePrompts: React.FC = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-600 rounded-2xl p-12 text-white shadow-xl relative overflow-hidden">
+          <div className="bg-blue-600 rounded-lg p-8 text-white shadow-md relative overflow-hidden">
             {/* Background Effects */}
             <div className="absolute top-0 left-0 w-full h-full">
-              <div className="absolute top-10 left-10 w-20 h-20 bg-yellow-400/20 rounded-full blur-xl animate-pulse"></div>
-              <div className="absolute bottom-10 right-10 w-16 h-16 bg-pink-400/20 rounded-full blur-xl animate-bounce"></div>
+              <div className="absolute top-6 left-6 w-16 h-16 bg-white/10 rounded-full blur-xl animate-pulse"></div>
+              <div className="absolute bottom-6 right-6 w-12 h-12 bg-white/10 rounded-full blur-xl animate-bounce"></div>
             </div>
             
             <div className="relative">
-              <div className="flex items-center justify-center space-x-3 mb-6">
-                <Star className="h-8 w-8 text-yellow-400 fill-current" />
-                <h3 className="text-3xl lg:text-4xl font-bold">
-                  Start Your Transformation
+              <div className="flex items-center justify-center space-x-2 mb-4">
+                <Star className="h-6 w-6 text-yellow-400 fill-current" />
+                <h3 className="text-2xl lg:text-3xl font-bold">
+                  {t('startYourTransformation')}
                 </h3>
-                <Star className="h-8 w-8 text-yellow-400 fill-current" />
+                <Star className="h-6 w-6 text-yellow-400 fill-current" />
               </div>
               
-              <p className="text-xl text-white/95 mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
-                Join the fitness revolution! Create an account to save your goals, track your progress, and get personalized recommendations that evolve with your transformation.
+              <p className="text-lg text-white/95 mb-6 max-w-3xl mx-auto leading-relaxed font-normal">
+                {t('joinFitnessRevolution')}
               </p>
               
-              <button className="bg-white text-emerald-600 px-12 py-4 rounded-xl font-bold text-xl hover:bg-gray-50 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl shadow-lg">
-                Start My Transformation
+              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md shadow-sm">
+                {t('startMyTransformation')}
               </button>
             </div>
           </div>
